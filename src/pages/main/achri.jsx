@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from './achri.module.css';
 import supabase from '/src/config/supabaseClient';
 import { Link } from 'react-router-dom';
-
+import image from '../../assets/yourimage.png';
 function Achri() {
     const [topMeals, setTopMeals] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -54,7 +54,7 @@ function Achri() {
                     </div>
                     <div className={styles.hero_image}>
                         <div className={styles.image_container}>
-                            <img src="/src/assets/9f56d93485bb138397711744476d8c46.png" alt="Delicious food" />
+                            <img src={image} alt="Delicious food" />
                             <div className={styles.image_overlay}></div>
                         </div>
                     </div>
