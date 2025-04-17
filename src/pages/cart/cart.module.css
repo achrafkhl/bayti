@@ -1,0 +1,216 @@
+.body{
+    height: 100vh;
+    margin: 0px;
+    width: 100vw;
+    
+    overflow-x: hidden;
+    background-color: rgb(212, 192, 174);
+    
+}
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+    background-color: rgba(89, 0, 0, 1);
+    color: white;
+}
+
+.header li{
+    display: inline;
+    list-style: none;
+    font-size: large;
+    margin: 0px 20px;
+    cursor: pointer;
+}
+.header li a{
+    text-decoration: none;
+    color: white;
+}
+
+.all{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 50px 0;
+    gap: 35px;
+}
+.left{
+    border: 1px solid rgba(89, 0, 0, 0.2);
+    width: 870px;
+    height: fit-content;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.up{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid rgba(89, 0, 0, 0.1);
+    color: #590000;
+    font-size: 18px;
+    font-weight: 600;
+    background: rgba(89, 0, 0, 0.03);
+    border-radius: 20px 20px 0 0;
+}
+.gauche{
+    width: 400px;
+    padding-left: 20px;
+}
+.gauche p{
+    margin-left: 30px;
+}
+.droite{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 350px;
+    justify-content: space-between;
+}
+
+.cart_flex{
+    display: flex;
+    flex-direction: column;
+}
+.sela{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 130px;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(89, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    padding: 10px 0;
+}
+.sela:hover {
+    background: rgba(89, 0, 0, 0.02);
+}
+.info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+}
+
+.product{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 400px;
+}
+.sela img{
+    height: 90px;
+    width: 90px;
+    margin-left: 30px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid rgba(89, 0, 0, 0.1);
+}
+.sela button{
+    font-size: 20px;
+    color: #590000;
+    background-color: rgba(89, 0, 0, 0.019);
+    border: none;
+    cursor: pointer;
+    margin: 0 20px 0 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    width: fit-content;
+    height: fit-content;
+}
+.sela button:hover {
+    background-color: rgba(89, 0, 0, 0.1);
+    transform: scale(1.1);
+}
+.down{
+    width: 93%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+    height: 45px;
+}
+.down button{
+    border-radius: 25px;
+    height: 35px;
+    font-size: 14px;
+    color: white;
+    background: linear-gradient(135deg, #590000 0%, #6a0000 100%);
+    cursor: pointer;
+    padding: 0 20px;
+    border: none;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+.down button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+.down a{
+    text-decoration: none;
+    color: white;
+}
+
+.right{
+    height: fit-content;
+    width: 430px;
+    border: 1px solid rgba(89, 0, 0, 0.2);
+    padding: 0 20px;
+    text-align: center;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #590000 0%, #6a0000 100%);
+    color: white;
+    padding-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.first{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.ana{
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 0;
+    margin: 15px 0;
+}
+.right button{
+    width: 70%;
+    height: 45px;
+    border-radius: 25px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #590000;
+    background-color: white;
+    cursor: pointer;
+    margin-top: 80px;
+    transition: all 0.3s ease;
+    border: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.right button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+.total{
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+}
+button:hover{
+    opacity: 0.6;
+}

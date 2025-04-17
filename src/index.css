@@ -1,0 +1,38 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+.multi-range-slider {
+    width: 80%;
+    color: rgba(0, 0, 0, 0);
+    height: 6px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(89, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 25px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.multi-range-slider .bar {
+    padding: 0 20px;
+    background: #590000;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(89, 0, 0, 0.2);
+}
+#err-mail,#err-pass,#err-phone,#err-name{
+    margin:0px 20px 0;
+  }
+  button{
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+    width: fit-content;
+  }
