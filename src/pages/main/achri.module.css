@@ -83,7 +83,7 @@ nav a:hover {
     z-index: 1;
 }
 
-.hero_content h1 {
+.hero_content h1 , .highlight {
     font-size: 3.5rem;
     color: #590000;
     margin-bottom: 1.5rem;
