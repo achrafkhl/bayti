@@ -12,7 +12,7 @@ function Home() {
     const [quantity, setQuantity] = useState(1);
     const [isFavorite, setIsFavorite] = useState(false);
     const [showFilters, setShowFilters] = useState(false);
-    const userId = localStorage.getItem("userId");
+    const [userId, setUserId] = useState(null);
 
     const [cartMessage, setCartMessage] = useState(""); 
 
@@ -23,6 +23,19 @@ function Home() {
 
     const [searchQuery, setSearchQuery] = useState("");
 
+    useEffect(() => {
+        const fetchUser = async () => {
+          const { data, error } = await supabase.auth.getUser();
+          if (error) {
+            console.error("Failed to get user:", error.message);
+            setErr("User not logged in");
+          } else {
+            setUserId(data.user?.id);
+          }
+        };
+    
+        fetchUser();
+      }, []);
     const toggleFilters = () => {
         setShowFilters(!showFilters);
     };
