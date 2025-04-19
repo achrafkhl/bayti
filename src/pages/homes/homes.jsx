@@ -10,11 +10,26 @@ function Homes() {
     const [orders, setOrders] = useState([]);
     const [items, setItems] = useState([]);
     const [errFetch, setErrFetch] = useState(null);
-    const userId = localStorage.getItem("userId");
+    const [userId, setUserId] = useState(null);
     const [buyers, setBuyers] = useState({});
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [selectedOption,setSelectedOption]=useState("request");
     const [isLoading, setIsLoading] = useState(false);
+
+    const [logErr,setLogErr] = useState(null)
+            useEffect(() => {
+              const fetchUser = async () => {
+                const { data, error } = await supabase.auth.getUser();
+                if (error) {
+                  console.error("Failed to get user:", error.message);
+                  setLogErr("User not logged in");
+                } else {
+                  setUserId(data.user?.id);
+                }
+              };
+          
+              fetchUser();
+            }, []);
 
     useEffect(() => {
         const fetchData = async () => {

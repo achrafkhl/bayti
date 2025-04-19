@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import supabase from '/src/config/supabaseClient';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Link } from "react-router-dom";
@@ -11,7 +11,22 @@ function New() {
     const [rating, setRating] = useState('');
     const [file, setFile] = useState('');
     const [loading, setLoading] = useState(false);  // New Loading State
-    const userId = localStorage.getItem("userId");
+    const [userId, setUserId] = useState(null);
+
+    const [logErr,setLogErr] = useState(null)
+            useEffect(() => {
+              const fetchUser = async () => {
+                const { data, error } = await supabase.auth.getUser();
+                if (error) {
+                  console.error("Failed to get user:", error.message);
+                  setLogErr("User not logged in");
+                } else {
+                  setUserId(data.user?.id);
+                }
+              };
+          
+              fetchUser();
+            }, []);
 
     const submitInfo = async () => {
         if (!category || !price || !description || !rating || !file || !product) {

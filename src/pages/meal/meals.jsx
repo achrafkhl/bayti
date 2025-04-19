@@ -7,7 +7,22 @@ import { Link } from "react-router-dom";
 function Meals() {
     const [sellers, setSellers] = useState([]);
     const [err, setErr] = useState(null);
-    const userId = localStorage.getItem("userId");
+    const [userId, setUserId] = useState(null);
+
+    const [logErr,setLogErr] = useState(null)
+            useEffect(() => {
+              const fetchUser = async () => {
+                const { data, error } = await supabase.auth.getUser();
+                if (error) {
+                  console.error("Failed to get user:", error.message);
+                  setLogErr("User not logged in");
+                } else {
+                  setUserId(data.user?.id);
+                }
+              };
+          
+              fetchUser();
+            }, []);
  
     
     useEffect(() => {

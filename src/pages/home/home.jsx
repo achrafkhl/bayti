@@ -23,19 +23,20 @@ function Home() {
 
     const [searchQuery, setSearchQuery] = useState("");
 
-    useEffect(() => {
-        const fetchUser = async () => {
-          const { data, error } = await supabase.auth.getUser();
-          if (error) {
-            console.error("Failed to get user:", error.message);
-            setErr("User not logged in");
-          } else {
-            setUserId(data.user?.id);
-          }
-        };
-    
-        fetchUser();
-      }, []);
+    const [logErr,setLogErr] = useState(null)
+            useEffect(() => {
+              const fetchUser = async () => {
+                const { data, error } = await supabase.auth.getUser();
+                if (error) {
+                  console.error("Failed to get user:", error.message);
+                  setLogErr("User not logged in");
+                } else {
+                  setUserId(data.user?.id);
+                }
+              };
+          
+              fetchUser();
+            }, []);
     const toggleFilters = () => {
         setShowFilters(!showFilters);
     };
