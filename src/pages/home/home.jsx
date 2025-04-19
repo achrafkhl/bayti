@@ -5,10 +5,11 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import MultiRangeSlider from "multi-range-slider-react";
 import styles from"./home.module.css"
 import { Link } from "react-router-dom";
-import image1 from "/src/assets/first.png"
-import image2 from "/src/assets/second.jpeg"
-import image3 from "/src/assets/third.jpg"
-import image4 from "/src/assets/forth.jpg"
+import image1 from "../../assets/first.png";
+import image2 from "../../assets/second.jpeg";
+import image3 from "../../assets/third.jpg";
+import image4 from "../../assets/forth.jpg";
+
 function Home() {
     const [sellers, setSellers] = useState([]);
     const [err, setErr] = useState(null);
