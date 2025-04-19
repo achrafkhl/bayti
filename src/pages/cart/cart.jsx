@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import supabase from "/src/config/supabaseClient";
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Sela from "./sela";
 import styles from './cart.module.css';
@@ -8,8 +8,11 @@ function Cart() {
     const [info, setInfo] = useState([]);
         const [err,setErr]=useState('')
         const userId = sessionStorage.getItem("userId");
+        const navigate = useNavigate();
 
-        
+        if(!userId){
+          navigate("/login")
+        }
         useEffect(() => {
             const fetchData =async() => {
                 const {error,data} = await supabase.from("cart").select("*").eq("userId",userId);

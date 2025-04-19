@@ -112,7 +112,7 @@ if (!error && session?.user?.id) {
                             <div className={styles.c5}></div>
                             <div className={styles.login}>
                                 <div className={styles.ii} style={{ textAlign: "left", color: "black" }}>
-                                    <Link to="/achri" style={{ cursor: "pointer" }}>
+                                    <Link to="/" style={{ cursor: "pointer" }}>
                                         <i className="fas fa-home" style={{ color: "rgb(0, 0, 0)" }}></i>
                                     </Link>
                                 </div>

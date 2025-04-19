@@ -5,6 +5,10 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import MultiRangeSlider from "multi-range-slider-react";
 import styles from"./home.module.css"
 import { Link } from "react-router-dom";
+import image1 from "/src/assets/first.png"
+import image2 from "/src/assets/second.jpeg"
+import image3 from "/src/assets/third.jpg"
+import image4 from "/src/assets/forth.jpg"
 function Home() {
     const [sellers, setSellers] = useState([]);
     const [err, setErr] = useState(null);
@@ -249,11 +253,11 @@ function Home() {
                 <div className={styles.right}>
                     <div className={styles.imag}>
                         <div className={styles.container}>
-                            <img src="/src/assets/first.png" className={styles.i1} />
-                            <img src="/src/assets/second.jpeg" className={styles.i2} />
-                            <img src="/src/assets/third.jpg" className={styles.i3} />
-                            <img src="/src/assets/forth.jpg" className={styles.i4} />
-                            <img src="/src/assets/first.png" className={styles.i5} />
+                            <img src={image1} className={styles.i1} />
+                            <img src={image2} className={styles.i2} />
+                            <img src={image3} className={styles.i3} />
+                            <img src={image4} className={styles.i4} />
+                            <img src={image1} className={styles.i5} />
                         </div>
                     </div>
                     <div className={styles.search}>
