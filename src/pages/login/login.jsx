@@ -1,10 +1,13 @@
 import { useState } from "react";
 import supabase from '/src/config/supabaseClient'
 import styles from './Login.module.css'
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+
+
 function Login() {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
+    const navigate = useNavigate();
             const checkEmail=async(email)=>{
                 const {data,error}= await supabase.from('users').select('email').eq("email",email).single()
                     if(error || !data) {
@@ -79,8 +82,6 @@ function Login() {
                         } else {
                           const userId = data.user.id;
           
-                          localStorage.setItem("userId", data.user.id);
-          
                           const {data:userData, error:userError} =await supabase.from('users').select('*').eq('id',userId).single()
                           if(userError){
                             console.log(userError)
@@ -88,10 +89,10 @@ function Login() {
                           } else{
                             localStorage.setItem("name", userData.name);
                             if(userData.type==="seller"){
-                              window.location.href = "/homes";
+                              navigate("/homes");
                             }
                             if(userData.type==="buyer"){
-                              window.location.href = "/home";
+                              navigate("/home");
                             }
                           
                           }
