@@ -7,21 +7,8 @@ import styles from './cart.module.css';
 function Cart() {
     const [info, setInfo] = useState([]);
         const [err,setErr]=useState('')
-        const [userId, setUserId] = useState(null);
-        const [logErr,setLogErr] = useState(null)
-        useEffect(() => {
-          const fetchUser = async () => {
-            const { data, error } = await supabase.auth.getUser();
-            if (error) {
-              console.error("Failed to get user:", error.message);
-              setLogErr("User not logged in");
-            } else {
-              setUserId(data.user?.id);
-            }
-          };
-      
-          fetchUser();
-        }, []);
+        const userId = sessionStorage.getItem("userId");
+
         
         useEffect(() => {
             const fetchData =async() => {

@@ -11,24 +11,12 @@ function Favorites() {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [favorites, setFavorites] = useState({});
-    const [userId, setUserId] = useState(null);
+    
 
     const [cartMessage, setCartMessage] = useState(""); 
 
-    const [logErr,setLogErr] = useState(null)
-            useEffect(() => {
-              const fetchUser = async () => {
-                const { data, error } = await supabase.auth.getUser();
-                if (error) {
-                  console.error("Failed to get user:", error.message);
-                  setLogErr("User not logged in");
-                } else {
-                  setUserId(data.user?.id);
-                }
-              };
-          
-              fetchUser();
-            }, []);
+    const userId = sessionStorage.getItem("userId");
+
     
     useEffect(() => {
         const fetchFavorites = async () => {

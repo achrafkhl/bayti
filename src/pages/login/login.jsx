@@ -81,7 +81,10 @@ function Login() {
                             document.getElementById('login-pass').style.border="solid 2px red";
                         } else {
                           const userId = data.user.id;
-          
+                          const { data: { session }, error } = await supabase.auth.getSession();
+if (!error && session?.user?.id) {
+  sessionStorage.setItem("userId", session.user.id);
+}
                           const {data:userData, error:userError} =await supabase.from('users').select('*').eq('id',userId).single()
                           if(userError){
                             console.log(userError)

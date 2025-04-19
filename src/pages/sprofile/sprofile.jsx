@@ -17,7 +17,8 @@ function Sprofile() {
     const [information,setInformation]=useState(false);
     const [perInfo,setPerInfo]=useState(true)
 
-    const [userId, setUserId] = useState(null);
+    const userId = sessionStorage.getItem("userId");
+
 
     const [current,setCurrent] = useState('');
     const [newpass,setNewpass] = useState('');
@@ -35,20 +36,7 @@ function Sprofile() {
     const [errItem,setErrItem] = useState(null);
     const [showItem,setShowItem] = useState(null);
 
-    const [logErr,setLogErr] = useState(null)
-            useEffect(() => {
-              const fetchUser = async () => {
-                const { data, error } = await supabase.auth.getUser();
-                if (error) {
-                  console.error("Failed to get user:", error.message);
-                  setLogErr("User not logged in");
-                } else {
-                  setUserId(data.user?.id);
-                }
-              };
-          
-              fetchUser();
-            }, []);
+    
 
     useEffect(() => {
         if (selectedOption === "info") {
