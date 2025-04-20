@@ -18,7 +18,7 @@ function Home() {
     const [isFavorite, setIsFavorite] = useState(false);
     const [showFilters, setShowFilters] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 18;
+    const itemsPerPage = 12;
 
     const [cartMessage, setCartMessage] = useState(""); 
 
