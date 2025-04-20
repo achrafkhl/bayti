@@ -161,12 +161,12 @@ function Cart() {
             <div className={styles.header}>
   <h1><em>BAYTI</em></h1>
   <ul>
-    <li><Link to="/home"><i className="fas fa-home"></i> Home</Link></li>
-    <li><Link to="/favorites"><i className="fas fa-heart"></i> Favorites</Link></li>
+    <li><Link className={styles.a}  to="/home"><i className="fas fa-home"></i> <span>Home</span></Link></li>
+    <li><Link className={styles.a}  to="/favorites"><i className="fas fa-heart"></i> <span>Favorites</span></Link></li>
     <li style={{ backgroundColor: "grey", padding: '10px', borderRadius: "15px" }}>
-      <Link to="/cart"><i className="fas fa-shopping-cart"></i> Cart</Link>
+      <Link className={styles.a} to="/cart"><i className="fas fa-shopping-cart"></i> <span>Cart</span></Link>
     </li>
-    <li><Link to="/cprofile"><i className="fas fa-user"></i> Profile</Link></li>
+    <li><Link className={styles.a} to="/cprofile"><i className="fas fa-user"></i> <span>Profile</span></Link></li>
   </ul>
 </div>
 

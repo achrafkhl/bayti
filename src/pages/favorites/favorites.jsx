@@ -118,12 +118,12 @@ function Favorites() {
             <div className={styles.header}>
               <h1><em>BAYTI</em></h1>
               <ul>
-                <li><Link to="/home"><i className="fas fa-home"></i> Home</Link></li>
+                <li><Link className={styles.a} to="/home"><i className="fas fa-home"></i> <span>Home</span></Link></li>
                 <li style={{ backgroundColor: "grey", padding: "10px", borderRadius: "15px" }}>
-                  <Link to="/favorites"><i className="fas fa-heart"></i> Favorites</Link>
+                  <Link to="/favorites" className={styles.a}><i className="fas fa-heart"></i> <span>Favorites</span></Link>
                 </li>
-                <li><Link to="/cart"><i className="fas fa-shopping-cart"></i> Cart</Link></li>
-                <li><Link to="/cprofile"><i className="fas fa-user"></i> Profile</Link></li>
+                <li><Link to="/cart" className={styles.a}><i className="fas fa-shopping-cart"></i> <span>Cart</span></Link></li>
+                <li><Link to="/cprofile" className={styles.a}><i className="fas fa-user"></i> <span>Profile</span></Link></li>
               </ul>
             </div>
         
@@ -173,7 +173,7 @@ function Favorites() {
                             </div>
                             <p><i className="fas fa-mitten"></i> {selectedProduct.name}</p>
                           </div>
-                          <h2 className={styles.howa}>price: {selectedProduct.price} DA</h2>
+                          <h2>price: {selectedProduct.price} DA</h2>
                           <div className={styles.add}>
                             <div className={styles.quantity}>
                               <button onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}>-</button>
@@ -192,7 +192,7 @@ function Favorites() {
                           </div>
                         </div>
                       </div>
-                      <h2 className={styles.howa} style={{ textAlign: "right", marginRight: "30px" }}>
+                      <h2 className={styles.howaa} style={{ textAlign: "right", marginRight: "30px" }}>
                         <b>Final Price:</b> {(selectedProduct.price * quantity).toLocaleString()} DA
                       </h2>
                       <p className={styles.howa} style={{ marginTop: "-40px" }}><em>Category</em>: {selectedProduct.category}</p>
