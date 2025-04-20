@@ -13,7 +13,7 @@ function Sprofile() {
     const [newUser,setNewUser]=useState('');
     const [name,setName]=useState('');
     const [lname,setLname]=useState('');
-
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [information,setInformation]=useState(false);
     const [perInfo,setPerInfo]=useState(true)
 
@@ -296,24 +296,25 @@ function Sprofile() {
         setInformation(false);
     }
 
-
+    const toggleMenu = () => {
+      setIsMenuOpen(!isMenuOpen);
+  };
     
         
     return (
         <div className={styles.body}>
           <div className={styles.header}>
-            <h1><em>BAYTI</em></h1>
-            <ul>
-              <li>
-                <Link to="/homes"><i className="fas fa-home"></i> Home</Link>
-              </li>
-              <li><Link to="/new"><i className='fas fa-plus-circle'></i> New meal</Link></li>
-              <li><Link to="/meal"><i className="fas fa-utensils"></i> My meals</Link></li>
-              <li style={{ backgroundColor: "grey", padding: '10px', borderRadius: "15px" }}>
-                <Link to='/sprofile'><i className="fas fa-user"></i> Profile</Link>
-              </li>
-            </ul>
-          </div>
+                        <i className={`fas fa-bars ${styles.menu_icon}`} onClick={toggleMenu}></i>
+                        <h1><em>BAYTI</em></h1>
+                        <ul>
+                          <li><Link className={styles.a} to="/home"><i className="fas fa-home"></i> <span>Home</span></Link></li>
+                          <li><Link className={styles.a} to="/favorites"><i className="fas fa-heart"></i> <span>Favorites</span></Link></li>
+                          <li><Link className={styles.a} to="/cart"><i className="fas fa-shopping-cart"></i> <span>Cart</span></Link></li>
+                          <li style={{ backgroundColor: "grey", padding: '10px', borderRadius: "15px" }}>
+                            <Link  className={styles.a}to="/cprofile"><i className="fas fa-user"></i> <span>Profile</span></Link>
+                          </li>
+                        </ul>
+                      </div>
           <div className={styles.all}>
           <input type="radio" name="tab" id="info" className="un" checked={selectedOption === "info"} onChange={() => setSelectedOption("info")} />
 <input type="radio" name="tab" id="pass" className="deux" checked={selectedOption === "pass"} onChange={() => setSelectedOption("pass")} />
@@ -321,12 +322,12 @@ function Sprofile() {
 <input type="radio" name="tab" id="contact" className="quatre" checked={selectedOption === "contact"} onChange={() => setSelectedOption("contact")} />
 <input type="radio" name="tab" id="out" className="cinq" checked={selectedOption === "out"} onChange={() => setSelectedOption("out")} />
 
-<div className={styles.tabs}>
-                <label htmlFor="info" className={styles.lwl}style={{position:"relative"}}>Personal information</label>
-                <label htmlFor="pass">Change password</label>
-                <label htmlFor="history"><i className="fas fa-history"></i> orders history</label>
-                <label htmlFor="contact"><i className="fas fa-phone"></i> Contact Us</label>
-                <label htmlFor="out" onClick={() => setShowModal(true)}><i className="fas fa-sign-out-alt"></i> Sign out</label>
+                <div className={`${styles.tabs} ${isMenuOpen ? styles.active : ''}`}>
+                                <label htmlFor="info" className={styles.lwl}style={{position:"relative"}}>Personal information</label>
+                                <label htmlFor="pass">Change password</label>
+                                <label htmlFor="history"><i className="fas fa-history"></i> orders history</label>
+                                <label htmlFor="contact"><i className="fas fa-phone"></i> Contact Us</label>
+                                <label htmlFor="out" onClick={() => setShowModal(true)}><i className="fas fa-sign-out-alt"></i> Sign out</label>
                 <div
                   className={styles.run}
                   style={{

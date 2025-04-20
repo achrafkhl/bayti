@@ -115,11 +115,11 @@ function Homes() {
                 <h1><em>BAYTI</em></h1>
                 <ul>
                     <li className={styles.active} style={{ backgroundColor: "grey", padding: '10px', borderRadius: "15px" }}>
-                        <Link to="/homes"><i className="fas fa-home"></i> Home</Link>
+                        <Link className={styles.a} to="/homes"><i className="fas fa-home"></i> <span>Home</span></Link>
                     </li>
-                    <li><Link to="/new"><i className="fas fa-plus-circle"></i> New meal</Link></li>
-                    <li><Link to="/meal"><i className="fas fa-utensils"></i> My meals</Link></li>
-                    <li><Link to="/sprofile"><i className="fas fa-user"></i> Profile</Link></li>
+                    <li><Link className={styles.a} to="/new"><i className="fas fa-plus-circle"></i> <span>New meal</span></Link></li>
+                    <li><Link className={styles.a} to="/meal"><i className="fas fa-utensils"></i> <span>My meals</span></Link></li>
+                    <li><Link className={styles.a} to="/sprofile"><i className="fas fa-user"></i> <span>Profile</span></Link></li>
                 </ul>
             </div>
     
@@ -149,7 +149,7 @@ function Homes() {
                                                 <h3>Order #{index + 1}</h3>
                                             </div>
                                             <p><strong>Buyer:</strong> {buyers[order.buyer_id] ? `${buyers[order.buyer_id].fname} ${buyers[order.buyer_id].lname.toUpperCase()}` : "Loading..."}</p>
-                                            <p style={{ fontSize: "20px" }}><strong>Total Price:</strong> {order.total_price} DA</p>
+                                            <p  className={styles.ttll}><strong>Total Price:</strong> {order.total_price} DA</p>
                                         </div>
                                     ))}
                                 </div>

@@ -82,12 +82,12 @@ function New() {
             <div className={styles.header}>
                 <h1><em>BAYTI</em></h1>
                 <ul>
-                    <li><Link to="/homes"><i className="fas fa-home"></i> Home</Link></li>
+                    <li><Link className={styles.a} to="/homes"><i className="fas fa-home"></i> <span>Home</span></Link></li>
                     <li style={{ backgroundColor: "grey", padding: '10px', borderRadius: "15px" }}>
-                        <Link to="/new"><i className="fas fa-plus-circle"></i> New meal</Link>
+                        <Link className={styles.a} to="/new"><i className="fas fa-plus-circle"></i> <span>New meal</span></Link>
                     </li>
-                    <li><Link to="/meal"><i className="fas fa-utensils"></i> My meals</Link></li>
-                    <li><Link to="/sprofile"><i className="fas fa-user"></i> Profile</Link></li>
+                    <li><Link className={styles.a} to="/meal"><i className="fas fa-utensils"></i> <span>My meals</span></Link></li>
+                    <li><Link className={styles.a} to="/sprofile"><i className="fas fa-user"></i> <span>Profile</span></Link></li>
                 </ul>
             </div>
             

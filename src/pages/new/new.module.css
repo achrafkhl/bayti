@@ -12,6 +12,13 @@
     height: 80px;
     background-color: rgba(89, 0, 0, 1);
     color: white;
+    margin-bottom: 40px;
+}
+
+.header ul {
+    display: flex;
+    padding: 0;
+    align-items: center;
 }
 
 .header li{
@@ -24,7 +31,12 @@
 .header li a{
     text-decoration: none;
     color: white;
-
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.header li:hover {
+    opacity: 0.7;
 }
 .add{
     width: 100%;
@@ -124,4 +136,55 @@ input[type="file"] {
     font-size: 14px;
     color: #333;
     
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 60px;
+        padding: 0 15px;
+    }
+
+    .header ul {
+        gap: 15px;
+    }
+
+    .header li {
+        font-size: 16px;
+        margin: 0 10px;
+    }
+
+    .header li a {
+        gap: 5px;
+    }
+
+    .header li a span {
+        display: none;
+    }
+
+    .header li a i {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        height: 50px;
+        padding: 0 10px;
+    }
+
+    .header ul {
+        gap: 10px;
+    }
+
+    .header li {
+        margin: 0 5px;
+    }
+
+    .header li a i {
+        font-size: 18px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
 }
