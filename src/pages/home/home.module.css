@@ -786,17 +786,28 @@
 
 @media (max-width: 480px) {
     .card_grid {
-        grid-template-columns: 1fr;
-        max-width: 300px;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
         margin: 0 auto;
+        gap: 15px;
+        padding: 0 10px;
     }
 
     .card {
-        min-height: 280px;
+        min-height: 250px;
+        padding: 10px;
     }
 
     .card img {
-        max-width: 160px;
+        max-width: 120px;
+    }
+    
+    .info h2 {
+        font-size: 14px;
+    }
+    
+    .info p {
+        font-size: 12px;
     }
 }
 
