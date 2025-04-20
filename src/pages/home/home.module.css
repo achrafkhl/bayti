@@ -408,7 +408,6 @@
 
 .howa {
     margin-left: 40px;
-    
 
 }
 
@@ -463,6 +462,7 @@
 @media (max-width: 768px) {
     .modal {
         padding: 15px;
+        margin-right: 30px;
     }
     
     .modal .all {
@@ -505,14 +505,21 @@
     }
     
     .modal .add {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         gap: 10px;
+        justify-content: center;
     }
     .all{
         padding-right: 0;
     }
-    
+    .howa{
+        width: 120px;
+        font-size: 14px;
+    }
+    .howaa{
+        font-size: 22px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -538,7 +545,7 @@
     }
     
     .add_to_cart, .add_to_fav {
-        font-size: 16px;
+        font-size: 15px;
     }
     
     .close_btn {
@@ -790,5 +797,59 @@
 
     .card img {
         max-width: 160px;
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    padding: 20px 0;
+}
+
+.page_button {
+    padding: 8px 16px;
+    border: 2px solid #590000;
+    background-color: white;
+    color: #590000;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.page_button:hover {
+    background-color: #590000;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.page_button.active {
+    background-color: #590000;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .pagination {
+        gap: 5px;
+    }
+    
+    .page_button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pagination {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .page_button {
+        padding: 5px 10px;
+        font-size: 12px;
     }
 }

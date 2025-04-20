@@ -17,6 +17,8 @@ function Home() {
     const [quantity, setQuantity] = useState(1);
     const [isFavorite, setIsFavorite] = useState(false);
     const [showFilters, setShowFilters] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 18;
 
     const [cartMessage, setCartMessage] = useState(""); 
 
@@ -60,13 +62,21 @@ function Home() {
         return matchesCategory && matchesRating && matchesPrice && matchesSearch;
     });
     
+    // Calculate pagination
+    const totalPages = Math.ceil(filteredSellers.length / itemsPerPage);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredSellers.slice(indexOfFirstItem, indexOfLastItem);
 
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
-        
-        const handleRatingChange = (rating) => {
-            setSelectedRating(rating);
-        };
-        
+    const handleRatingChange = (rating) => {
+        setSelectedRating(rating);
+    };
+    
     useEffect(() => {
         const fetchData = async () => {
             const { data, error } = await supabase.from('seller').select();
@@ -277,14 +287,28 @@ function Home() {
                     <div className={styles.cardseller}>
                         {err && (<p>{err}</p>)}
                         {filteredSellers.length > 0 && (
-                            <div className={styles.card_grid}>
-                                {filteredSellers.map(seller => (
-                                    <Card key={seller.id} seller={seller} onClick={() => {
-    
-                                        setSelectedProduct(seller);
-                                    }} />
-                                ))}
-                            </div>
+                            <>
+                                <div className={styles.card_grid}>
+                                    {currentItems.map(seller => (
+                                        <Card key={seller.id} seller={seller} onClick={() => {
+                                            setSelectedProduct(seller);
+                                        }} />
+                                    ))}
+                                </div>
+                                {totalPages > 1 && (
+                                    <div className={styles.pagination}>
+                                        {[...Array(totalPages)].map((_, index) => (
+                                            <button
+                                                key={index + 1}
+                                                onClick={() => paginate(index + 1)}
+                                                className={`${styles.page_button} ${currentPage === index + 1 ? styles.active : ''}`}
+                                            >
+                                                {index + 1}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+                            </>
                         )}
                     </div>
                 </div>
@@ -317,7 +341,7 @@ function Home() {
                                             </div>
                                             <p><i className="fas fa-mitten"></i> {selectedProduct.name}</p>
                                         </div>
-                                        <h2 className={styles.howa}>price: {selectedProduct.price} DA</h2>
+                                        <h2>price: {selectedProduct.price} DA</h2>
                                         <div className={styles.add}>
                                             <div className={styles.quantity}>
                                                 <button onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}>-</button>
@@ -334,7 +358,7 @@ function Home() {
                                         </div>
                                     </div>
                                 </div>
-                                <h2 className={styles.howa} style={{ textAlign: "right", marginRight: "30px" }}>
+                                <h2 className={styles.howaa} style={{ textAlign: "right", marginRight: "30px" }}>
                                     <b>Final Price:</b> {(selectedProduct.price * quantity).toLocaleString()} DA
                                 </h2>
                                 <p className={styles.howa} style={{ marginTop: "-80px" }}><em>Category</em>: {selectedProduct.category}</p>
