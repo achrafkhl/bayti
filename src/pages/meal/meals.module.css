@@ -29,7 +29,7 @@
     cursor: pointer;
 }
 
-.header li a {
+.header li .a,.header li .a span {
     text-decoration: none;
     color: white;
     display: flex;
@@ -62,15 +62,15 @@
         margin: 0 10px;
     }
 
-    .header li a {
+    .header li .a {
         gap: 5px;
     }
 
-    .header li a span {
+    .header li .a span {
         display: none;
     }
 
-    .header li a i {
+    .header li .a i {
         font-size: 20px;
     }
 
@@ -93,7 +93,7 @@
         margin: 0 5px;
     }
 
-    .header li a i {
+    .header li .a i {
         font-size: 18px;
     }
 

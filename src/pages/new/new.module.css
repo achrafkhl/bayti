@@ -1,9 +1,9 @@
 .body{
     margin: 0;
-    width: 100vw;
     width: 100%;
     height: 100vh;
     background-color: #D4C0AE;
+    overflow-x: hidden;
 }
 .header{
     display: flex;
@@ -28,7 +28,7 @@
     margin: 0px 20px;
     cursor: pointer;
 }
-.header li a{
+.header li .a,.header li .a span{
     text-decoration: none;
     color: white;
     display: flex;
@@ -44,6 +44,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
 .add>.container{
     border: 2px solid rgba(89, 0, 0, 1);
@@ -54,27 +56,34 @@
     padding: 20px;
     border-radius: 40px;
     background-color: rgb(255, 255, 255);
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
 }
 .add h1{
     color: rgba(89, 0, 0, 1);
+    margin-bottom: 20px;
 }
 .add input{
     height: 30px;
-    width: 300px;
+    width: 100%;
+    max-width: 323px;
     border-radius:20px ;
     font-size: 15.8px;
     padding-left: 20px;
     outline: none;
     border: 2px solid black;
+    box-sizing: border-box;
 }
 .add select,.ana{
     font-size: 15.8px;
     height: 35px;
-    width: 323px;
+    width: 100%;
+    max-width: 323px;
     padding-left: 20px;
     border-radius:20px ;
     border: 2px solid black;
-    
+    box-sizing: border-box;
 }
 button{
     cursor: pointer;
@@ -88,6 +97,7 @@ button{
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 .add button{
     height: 35px;
@@ -96,6 +106,7 @@ button{
     border-radius:10px ;
     background-color: rgba(89, 0, 0, 1);
     color: #ffffff;
+    cursor: pointer;
 }
 .add button:hover{
     opacity: 0.8;
@@ -112,30 +123,70 @@ input:focus,select:focus{
     align-items: center;
     gap: 10px;
     font-family: Arial, sans-serif;
+    width: 100%;
+    max-width: 323px;
+    box-sizing: border-box;
+    position: relative;
+    border: 2px solid black;
+    border-radius: 20px;
+    height: 35px;
+    background-color: white;
 }
 
 .file_label {
     background-color: rgba(89, 0, 0, 1);
     color: white;
-    padding: 10px 15px;
-    border-radius: 25px;
+    padding: 12px 15px;
+    border-radius: 20px;
     cursor: pointer;
-    transition: 0.3s;
-    font-weight: bold;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    width: 160px;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    height: 35px;
+    border: 2px solid black;
+    margin-left: -2px;
+    white-space: nowrap;
+}
+
+.file_label i {
+    font-size: 14px;
 }
 
 .file_label:hover {
-    background-color: #545454;
+    background-color: white;
+    color: rgba(89, 0, 0, 1);
+    transform: translateY(-1px);
 }
 
 input[type="file"] {
-    display: none; /* Hide default input */
+    display: none;
 }
 
 .file_name {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     font-size: 14px;
-    color: #333;
-    
+    color: black;
+    pointer-events: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 180px);
+    text-align: center;
+    line-height: 35px;
+    height: 35px;
+    margin: 0;
+    margin-left: 60px;
+    padding-right: 20px;
+    box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
@@ -153,16 +204,56 @@ input[type="file"] {
         margin: 0 10px;
     }
 
-    .header li a {
+    .header li .a {
         gap: 5px;
     }
 
-    .header li a span {
+    .header li .a span {
         display: none;
     }
 
-    .header li a i {
+    .header li .a i {
         font-size: 20px;
+    }
+
+    .add > .container {
+        padding: 15px;
+    }
+
+    .first {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .add input, .add select, .ana {
+        max-width: 100%;
+    }
+
+    .add button {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .custom_file_upload {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .file_label {
+        background-color: rgba(89, 0, 0, 1);
+        color: white;
+    }
+
+    .file_label:hover {
+        background-color: white;
+        color: rgba(89, 0, 0, 1);
+    }
+
+    .file_name {
+        color: black;
+        text-align: center;
+        margin-top: 0px;
     }
 }
 
@@ -180,11 +271,33 @@ input[type="file"] {
         margin: 0 5px;
     }
 
-    .header li a i {
+    .header li .a i {
         font-size: 18px;
     }
 
     .header h1 {
         font-size: 24px;
+    }
+
+    .add > .container {
+        padding: 15px;
+        border-radius: 20px;
+    }
+
+    .add h1 {
+        font-size: 24px;
+    }
+
+    .add input, .add select, .ana {
+        font-size: 14px;
+    }
+
+    .file_label {
+        width: 100%;
+        text-align: center;
+    }
+
+    .file_name {
+        max-width: 120px;
     }
 }
