@@ -149,6 +149,7 @@ function Signup() {
   
           <div className={styles.conf}>
             <input type="password" value={conf} onChange={(e) => setConf(e.target.value)} placeholder="Confirm password" id="sign-conf" required />
+            <i className="fas fa-lock"></i>
           </div>
   
           <div className={styles.footer}>
