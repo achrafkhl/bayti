@@ -46,6 +46,7 @@
 
 .header li .a span {
     display: inline;
+    color: white;
 }
 
 @media (max-width: 768px) {
@@ -95,8 +96,9 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 50px 0;
+    padding: 50px 20px;
     gap: 35px;
+    box-sizing: border-box;
 }
 .left{
     border: 1px solid rgba(89, 0, 0, 0.2);
@@ -105,6 +107,11 @@
     background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.left:hover {
+    box-shadow: 0 8px 25px rgba(89, 0, 0, 0.15);
+    transform: translateY(-5px);
 }
 .up{
     display: flex;
@@ -117,10 +124,14 @@
     font-weight: 600;
     background: rgba(89, 0, 0, 0.03);
     border-radius: 20px 20px 0 0;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 .gauche{
     width: 400px;
     padding-left: 20px;
+    display: flex;
+    align-items: center;
 }
 .gauche p{
     margin-left: 30px;
@@ -147,10 +158,12 @@
     font-size: 16px;
     border-bottom: 1px solid rgba(89, 0, 0, 0.1);
     transition: all 0.3s ease;
-    padding: 10px 0;
+    padding: 15px 20px;
+    box-sizing: border-box;
 }
 .sela:hover {
     background: rgba(89, 0, 0, 0.02);
+    transform: translateX(5px);
 }
 .info{
     display: flex;
@@ -173,6 +186,11 @@
     border-radius: 10px;
     object-fit: cover;
     border: 1px solid rgba(89, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.sela:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(89, 0, 0, 0.1);
 }
 .sela button{
     font-size: 20px;
@@ -185,6 +203,7 @@
     transition: all 0.3s ease;
     width: fit-content;
     height: fit-content;
+    padding: 8px;
 }
 .sela button:hover {
     background-color: rgba(89, 0, 0, 0.1);
@@ -224,13 +243,18 @@
     height: fit-content;
     width: 430px;
     border: 1px solid rgba(89, 0, 0, 0.2);
-    padding: 0 20px;
+    padding: 30px;
     text-align: center;
     border-radius: 20px;
     background: linear-gradient(135deg, #590000 0%, #6a0000 100%);
     color: white;
     padding-bottom: 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.right:hover {
+    box-shadow: 0 8px 25px rgba(89, 0, 0, 0.2);
+    transform: translateY(-5px);
 }
 
 .first{
@@ -239,6 +263,7 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 .ana{
     border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -266,13 +291,136 @@
 .right button:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    opacity: 1;
+    background-color: #f5f5f5;
 }
 .total{
     font-size: 22px;
     font-weight: 600;
     color: white;
+    margin-top: 20px;
 }
 button:hover{
     opacity: 0.6;
+}
+
+@media (max-width: 1024px) {
+    .all {
+        padding: 30px 20px;
+        gap: 20px;
+    }
+    
+    .left {
+        width: 100%;
+        max-width: 870px;
+    }
+    
+    .right {
+        width: 100%;
+        max-width: 430px;
+    }
+}
+
+@media (max-width: 768px) {
+    .all {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 15px;
+    }
+    
+    .left {
+        width: 100%;
+    }
+    
+    .right {
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    .up {
+        height: auto;
+        padding: 15px 0;
+        flex-wrap: wrap;
+    }
+    
+    .gauche {
+        width: 100%;
+        padding-left: 15px;
+        margin-bottom: 10px;
+    }
+    
+    .droite {
+        width: 100%;
+        padding-right: 15px;
+        justify-content: space-around;
+    }
+    
+    .sela {
+        height: auto;
+        padding: 15px 0;
+        flex-wrap: wrap;
+    }
+    
+    .product {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .info {
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+    
+    .sela img {
+        margin-left: 15px;
+    }
+    
+    .sela button {
+        margin: 0 15px 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .all {
+        padding: 15px 10px;
+    }
+    
+    .up {
+        font-size: 16px;
+    }
+    
+    .gauche p {
+        margin-left: 15px;
+    }
+    
+    .droite {
+        font-size: 14px;
+    }
+    
+    .sela {
+        font-size: 14px;
+    }
+    
+    .sela img {
+        height: 70px;
+        width: 70px;
+    }
+    
+    .down {
+        padding: 0 15px;
+    }
+    
+    .down button {
+        font-size: 12px;
+        padding: 0 15px;
+    }
+    
+    .right {
+        padding: 20px 15px;
+    }
+    
+    .right button {
+        width: 90%;
+        margin-top: 40px;
+    }
 }
