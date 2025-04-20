@@ -1023,3 +1023,55 @@ body.modal_open {
     color: #590000;
     margin-right: 0.5rem;
 }
+
+.menu_icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .menu_icon {
+        display: block;
+    }
+    
+    .tabs {
+        position: fixed;
+        left: -300px;
+        top: 0;
+        height: 100vh;
+        transition: left 0.3s ease;
+        z-index: 999;
+    }
+    
+    .tabs.active {
+        left: 0;
+    }
+    
+    .content {
+        margin-left: 0;
+    }
+
+    .run {
+        display: none;
+    }
+
+    .tabs label {
+        background-color: rgb(212, 192, 174);
+        transition: background-color 0.3s ease;
+    }
+
+    :global(#info:checked) ~ .tabs label[for="info"],
+    :global(#pass:checked) ~ .tabs label[for="pass"],
+    :global(#history:checked) ~ .tabs label[for="history"],
+    :global(#contact:checked) ~ .tabs label[for="contact"],
+    :global(#out:checked) ~ .tabs label[for="out"] {
+        background-color: rgba(89, 0, 0, 1);
+        color: white;
+    }
+}

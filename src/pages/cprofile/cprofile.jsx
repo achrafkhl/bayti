@@ -5,6 +5,7 @@ import styles from "./cprofile.module.css"
 import { Link } from 'react-router-dom';
 function Cprofile() {
     const [selectedOption, setSelectedOption] = useState("info");
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [mail,setMail]=useState('');
     const [tele,setTele]=useState('');
     const [newMail,setNewMail]=useState('');
@@ -296,9 +297,14 @@ function Cprofile() {
         };
     
 
-        return (
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    return (
           <div className={styles.body}>
             <div className={styles.header}>
+              <i className={`fas fa-bars ${styles.menu_icon}`} onClick={toggleMenu}></i>
               <h1><em>BAYTI</em></h1>
               <ul>
                 <li><Link className={styles.a} to="/home"><i className="fas fa-home"></i> <span>Home</span></Link></li>
@@ -317,7 +323,7 @@ function Cprofile() {
               <input type="radio" name="tab" id="contact" checked={selectedOption === "contact"} onChange={() => setSelectedOption("contact")} />
               <input type="radio" name="tab" id="out" checked={selectedOption === "out"} onChange={() => setSelectedOption("out")} />
         
-              <div className={styles.tabs}>
+              <div className={`${styles.tabs} ${isMenuOpen ? styles.active : ''}`}>
                 <label htmlFor="info" className={styles.lwl}style={{position:"relative"}}>Personal information</label>
                 <label htmlFor="pass">Change password</label>
                 <label htmlFor="history"><i className="fas fa-history"></i> orders history</label>
