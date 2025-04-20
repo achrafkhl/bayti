@@ -13,14 +13,14 @@ function Card({seller, onClick}) {
     <div className={styles.card} onMouseOver={showCard} onMouseOut={hideCard} onClick={onClick}>
         <img src={seller.url} alt={seller.product} />
         <div className={styles.info}>
-            <p className={styles.hide} id={seller.id}>{seller.name}</p>
+            <p className={styles.hide} style={{visibility:"hidden"}}id={seller.id}>{seller.name}</p>
             <p>{seller.product}</p>
             <h2>{seller.price} DA</h2>
             <div className={styles.rate}>
                 {[...Array(seller.rating)].map((_, i) => (
                     <i key={i} className="fas fa-star" style={{ color: "orange" }}></i>
                 ))}
-                <p className={styles.hide} id={seller.id + 'd'} style={{ marginTop: '10px' }}>{seller.category}</p>
+                <p className={styles.hide} id={seller.id + 'd'} style={{ marginTop: '10px',visibility:"hidden" }}>{seller.category}</p>
             </div>
         </div>
     </div>
