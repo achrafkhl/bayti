@@ -1,4 +1,3 @@
-// src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Achri from './pages/main/achri';    
 import Cart from './pages/cart/cart';     
@@ -13,6 +12,7 @@ import New from './pages/new/new';
 import Reset from './pages/reset/reset';
 import Signup from './pages/signup/signup';
 import Sprofile from './pages/sprofile/sprofile';
+import PrivateRoute from './config/PrivateRoute';
 import "./index.css"
 
 function App() {
@@ -24,14 +24,16 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/forget" element={<Forget />} />
         <Route path="/reset" element={<Reset />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/cprofile" element={<Cprofile />} />
-        <Route path="/homes" element={<Homes />} />
-        <Route path="/new" element={<New />} />
-        <Route path="/meal" element={<Meal />} />
-        <Route path="/sprofile" element={<Sprofile />} />
+
+        {/* Private Routes */}
+        <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
+        <Route path="/favorites" element={<PrivateRoute><Favorites /></PrivateRoute>} />
+        <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
+        <Route path="/cprofile" element={<PrivateRoute><Cprofile /></PrivateRoute>} />
+        <Route path="/homes" element={<PrivateRoute><Homes /></PrivateRoute>} />
+        <Route path="/new" element={<PrivateRoute><New /></PrivateRoute>} />
+        <Route path="/meal" element={<PrivateRoute><Meal /></PrivateRoute>} />
+        <Route path="/sprofile" element={<PrivateRoute><Sprofile /></PrivateRoute>} />
       </Routes>
     </Router>
   );
