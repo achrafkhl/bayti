@@ -921,3 +921,10 @@
         font-size: 20px;
     }
 }
+
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

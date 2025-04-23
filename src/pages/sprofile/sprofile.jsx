@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import supabase from '/src/config/supabaseClient'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import styles from '/src/pages/cprofile/cprofile.module.css'
 
 function Sprofile() {
@@ -36,7 +36,32 @@ function Sprofile() {
     const [errItem,setErrItem] = useState(null);
     const [showItem,setShowItem] = useState(null);
 
-    
+            const navigate = useNavigate();
+        
+                useEffect(() => {
+                  const fetchUserRole = async() => {
+                    if (!userId) {
+                        navigate("/login");
+                      }
+                      try {
+                        const { data, error } = await supabase
+                          .from("users")
+                          .select("type")
+                          .eq("id", userId)
+                          .single();
+                  
+                        if (data?.type === "buyer") {
+                          navigate("/home"); 
+                        } else if (!data || error) {
+                          navigate("/login"); 
+                        }
+                      } catch (err) {
+                        console.error("Network error:", err);
+                        alert("There was an issue with the network. Please check your connection.");
+                      }
+                  } 
+                  fetchUserRole();
+                }, [navigate, userId]);
 
     useEffect(() => {
         if (selectedOption === "info") {
@@ -197,6 +222,7 @@ function Sprofile() {
             console.error("Error signing out:", error.message);
             alert("Failed to sign out. Try again.");
         } else {
+          sessionStorage.removeItem("userId");
             window.location.href = "/login";
         }
     };

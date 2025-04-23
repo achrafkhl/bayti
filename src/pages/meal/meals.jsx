@@ -3,13 +3,38 @@ import supabase from "/src/config/supabaseClient";
 import Card from "/src/pages/home/card";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import styles from './meals.module.css'
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 function Meals() {
     const [sellers, setSellers] = useState([]);
     const [err, setErr] = useState(null);
     const userId = sessionStorage.getItem("userId");
 
- 
+            const navigate = useNavigate();
+        
+                useEffect(() => {
+                  const fetchUserRole = async() => {
+                    if (!userId) {
+                        navigate("/login");
+                      }
+                      try {
+                        const { data, error } = await supabase
+                          .from("users")
+                          .select("type")
+                          .eq("id", userId)
+                          .single();
+                  
+                        if (data?.type === "buyer") {
+                          navigate("/home"); 
+                        } else if (!data || error) {
+                          navigate("/login"); 
+                        } 
+                      } catch (err) {
+                        console.error("Network error:", err);
+                        alert("There was an issue with the network. Please check your connection.");
+                      }
+                  } 
+                  fetchUserRole();
+                }, [navigate, userId]);
     
     useEffect(() => {
         const fetchMeals = async () => {

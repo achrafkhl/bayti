@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import supabase from '/src/config/supabaseClient';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import styles from './new.module.css'
 function New() {
     const [product, setProduct] = useState('');
@@ -14,6 +14,32 @@ function New() {
 
     const userId = sessionStorage.getItem("userId");
 
+            const navigate = useNavigate();
+        
+                useEffect(() => {
+                  const fetchUserRole = async() => {
+                    if (!userId) {
+                        navigate("/login");
+                      }
+                      try {
+                        const { data, error } = await supabase
+                          .from("users")
+                          .select("type")
+                          .eq("id", userId)
+                          .single();
+                  
+                        if (data?.type === "buyer") {
+                          navigate("/home"); 
+                        } else if (!data || error) {
+                          navigate("/login"); 
+                        }
+                      } catch (err) {
+                        console.error("Network error:", err);
+                        alert("There was an issue with the network. Please check your connection.");
+                      }
+                  } 
+                  fetchUserRole();
+                }, [navigate, userId]);
 
     const submitInfo = async () => {
         if (!category || !price || !description || !rating || !file || !product) {

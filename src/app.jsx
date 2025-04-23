@@ -25,7 +25,7 @@ function App() {
         <Route path="/forget" element={<Forget />} />
         <Route path="/reset" element={<Reset />} />
 
-        {/* Private Routes */}
+        
         <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
         <Route path="/favorites" element={<PrivateRoute><Favorites /></PrivateRoute>} />
         <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />

@@ -4,7 +4,7 @@ import Card from "./card";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import MultiRangeSlider from "multi-range-slider-react";
 import styles from"./home.module.css"
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import image1 from "../../assets/first.png";
 import image2 from "../../assets/second.jpeg";
 import image3 from "../../assets/third.jpg";
@@ -26,9 +26,38 @@ function Home() {
     const [selectedRating, setSelectedRating] = useState("All");
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(1000);
-
+    
     const [searchQuery, setSearchQuery] = useState("");
     const userId = sessionStorage.getItem("userId");
+
+    const navigate = useNavigate();
+    const [connection,setConnection]=useState(false);
+
+    useEffect(() => {
+      const fetchUserRole = async() => {
+        if (!userId) {
+            navigate("/login");
+          }
+          try {
+            const { data, error } = await supabase
+              .from("users")
+              .select("type")
+              .eq("id", userId)
+              .single();
+    
+            if (data?.type === "seller") {
+              navigate("/homes"); 
+            } else if (!data || error) {
+              navigate("/login"); 
+            }
+          } catch (err) {
+            setConnection(true);
+            console.error("Network error:", err);
+            alert("There was an issue with the network. Please check your connection.");
+          }
+      } 
+      fetchUserRole();
+    }, [navigate, userId]);
 
     const toggleFilters = () => {
         setShowFilters(!showFilters);
@@ -172,7 +201,13 @@ function Home() {
                 </ul>
             </div>
     
-            <div className={styles.all}>
+            {connection ? (
+                                        <div className={styles.loading_spinner}>
+                                            <i className="fas fa-spinner"></i>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div className={styles.all}>
                 <div className={`${styles.left} ${showFilters ? styles.active : ''}`}>
                     <h2>Filter Meals <i className="fas fa-sliders-h"></i></h2>
     
@@ -368,6 +403,10 @@ function Home() {
                     </div>
                 </div>
             )}
+                                        </>
+                                    )}
+
+            
     
             <footer></footer>
         </div>

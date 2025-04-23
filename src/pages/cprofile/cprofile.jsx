@@ -2,7 +2,7 @@ import { useState,useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import supabase from '/src/config/supabaseClient'
 import styles from "./cprofile.module.css"
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 function Cprofile() {
     const [selectedOption, setSelectedOption] = useState("info");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,6 +35,33 @@ function Cprofile() {
         const [showItem,setShowItem] = useState(null);
 
         const userId = sessionStorage.getItem("userId");
+
+            const navigate = useNavigate();
+        
+                useEffect(() => {
+                  const fetchUserRole = async() => {
+                    if (!userId) {
+                        navigate("/login");
+                      }
+                      try {
+                        const { data, error } = await supabase
+                          .from("users")
+                          .select("type")
+                          .eq("id", userId)
+                          .single();
+                  
+                        if (data?.type === "seller") {
+                          navigate("/homes"); 
+                        } else if (!data || error) {
+                          navigate("/login"); 
+                        }
+                      } catch (err) {
+                        console.error("Network error:", err);
+                        alert("There was an issue with the network. Please check your connection.");
+                      }
+                  } 
+                  fetchUserRole();
+                }, [navigate, userId]);
 
     useEffect(() => {
         if (selectedOption === "info") {
@@ -197,6 +224,7 @@ function Cprofile() {
             console.error("Error signing out:", error.message);
             alert("Failed to sign out. Try again.");
         } else {
+          sessionStorage.removeItem("userId");
             window.location.href = "/login";
         }
     };

@@ -8,11 +8,34 @@ function Cart() {
     const [info, setInfo] = useState([]);
         const [err,setErr]=useState('')
         const userId = sessionStorage.getItem("userId");
-        const navigate = useNavigate();
+        
+            const navigate = useNavigate();
+        
+                useEffect(() => {
+                  const fetchUserRole = async() => {
+                    if (!userId) {
+                        navigate("/login");
+                      }
+                      try {
+                        const { data, error } = await supabase
+                          .from("users")
+                          .select("type")
+                          .eq("id", userId)
+                          .single();
+                  
+                        if (data?.type === "seller") {
+                          navigate("/homes"); 
+                        } else if (!data || error) {
+                          navigate("/login"); 
+                        }
+                      } catch (err) {
+                        console.error("Network error:", err);
+                        alert("There was an issue with the network. Please check your connection.");
+                      }
+                  } 
+                  fetchUserRole();
+                }, [navigate, userId]);
 
-        if(!userId){
-          navigate("/login")
-        }
         useEffect(() => {
             const fetchData =async() => {
                 const {error,data} = await supabase.from("cart").select("*").eq("userId",userId);
