@@ -28,8 +28,7 @@ body{
     box-shadow: 0 2px 4px rgba(89, 0, 0, 0.2);
 }
 #err-mail,#err-pass,#err-phone,#err-name{
-    margin:0px 20px 0;
-    display: block;
+    margin:0px 40px 0;
   }
   button{
     margin: 0;

@@ -40,6 +40,7 @@
   background-color: rgb(244, 244, 244);
   outline: rgba(89, 0, 0, 1);
   border: 3px solid grey;
+  box-sizing: border-box;
 }
 .login input:focus{
   outline: rgba(89, 0, 0, 1);
@@ -308,4 +309,23 @@ option {
     height: 35px;
     font-size: 14px;
   }
+}
+
+.email, .phone, .pass, .conf {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  margin: 0 auto;
+}
+
+#imail, #passw, #tell {
+  width: 300px;
+  margin: 0 auto;
+  padding-left: 20px;
+}
+
+#imail p, #passw p, #tell p {
+  color: red;
+  font-size: 14px;
+  margin: 5px 0 0 0;
 }

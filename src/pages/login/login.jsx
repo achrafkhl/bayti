@@ -117,7 +117,7 @@ if (!error && session?.user?.id) {
                                     </Link>
                                 </div>
                                 <h1>Login</h1>
-                                <div className={`${styles.email} ${styles.color}`} id="login-email">
+                                <div className={styles.email} id="login-email">
                                     <input
                                         type="email"
                                         value={email}
@@ -127,8 +127,8 @@ if (!error && session?.user?.id) {
                                         required
                                     />
                                     <i className="fas fa-user"></i>
-                                    <div id="imail"></div>
                                 </div>
+                                <div id="imail"></div>
                                 <div className={`${styles.pass} ${styles.color}`} id="login-password">
                                     <input
                                         type="password"

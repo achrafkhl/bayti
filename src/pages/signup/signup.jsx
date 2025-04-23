@@ -55,19 +55,22 @@ function Signup() {
     }
 
     const { data, error } = await supabase
-      .from("users")
-      .select("email, phone")
-      .or(`email.eq.${email},phone.eq.${phone}`)
-      .single();
-
-    if (data||!error) {
-      if (data.email === email) showError("imail", "err-mail", "Email already registered", "sign-mail");
-      if (data.phone === phone) showError("passw", "err-phone", "Phone number already registered", "sign-tele");
-      return;
-    }
-
+  .from("users")
+  .select("email, phone")
+  .or(`email.eq.${email},phone.eq.${phone}`);
+if(error){
+  console.log(error.message)
+}
+if (data && data.length > 0) {
+  data.forEach(user => {
+    if (user.email === email) showError("imail", "err-mail", "Email already registered", "sign-mail");
+    if (user.phone === phone) showError("passw", "err-phone", "Phone number already registered", "sign-tele");
+  });
+  return;
+}
     setCont(true);
     setSign(false);
+
   };
 
   const finishSignUp = async () => {
