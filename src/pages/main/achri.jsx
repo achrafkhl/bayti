@@ -37,7 +37,7 @@ function Achri() {
                         <li><Link className={styles.nav_link} to="/">Home</Link></li>
                         <li><Link className={styles.nav_link} to="/login">Login</Link></li>
                         <li><Link className={styles.nav_link} to="/signup">Sign Up</Link></li>
-                        <li><Link className={styles.nav_link} to="/info">Info</Link></li>
+                        <li><Link className={styles.nav_link} to="/">Info</Link></li>
                     </ul>
                 </nav>
             </div>
