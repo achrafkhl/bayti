@@ -416,7 +416,7 @@ function Sprofile() {
                                         <div className={styles.phone}>
                                           <p>Phone Number</p>
                                           <div id="tele" className={styles.zouj}>
-                                            <p>0{tele}</p>
+                                            <p>{tele}</p>
                                           </div>
                                           <button onClick={change2} className={styles.mail_but} id= "phone-but">Change Phone</button>
                                           <div id="phone" className={styles.zoujj}>

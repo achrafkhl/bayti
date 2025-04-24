@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import supabase from "/src/config/supabaseClient";
 import styles from "./forget.module.css";
 
@@ -9,7 +9,7 @@ function Forget() {
     const [number, setNumber] = useState("");
     const [, setFetError] = useState(null);
     const [user, setUser] = useState([]);
-
+    const navigate = useNavigate();
     useEffect(() => {
         const fetData = async () => {
             const { data, error } = await supabase.from("users").select();
@@ -43,7 +43,9 @@ function Forget() {
                 alert("Error sending reset email: " + error.message);
             }
             if (data) {
+                localStorage.setItem("userEmail", email);
                 alert("Check your email for the password reset link.");
+                navigate("/login")
             }
         }
         if (selectedOption === "telephone") {

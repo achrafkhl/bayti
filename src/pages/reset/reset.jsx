@@ -1,25 +1,28 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import supabase from "/src/config/supabaseClient";
-import { Link } from "react-router-dom";
-import styles from '/src/pages/forget/forget.module.css'
+import styles from "/src/pages/forget/forget.module.css";
+
 function Reset() {
   const [pass, setPass] = useState("");
   const [conf, setConf] = useState("");
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      if (user) {
-        setUser(user);
+    const checkSession = async () => {
+      const { data: { session }, error } = await supabase.auth.getSession();
+
+      if (error || !session || !session.user) {
+        alert("No authenticated reset session found. Please use the reset link from your email.");
+        navigate("/login");
       } else {
-        alert("No authenticated user found. Please log in.");
-        window.location.href = "/login";
-        console.log(error)
+        setUser(session.user);
       }
     };
-    fetchUser();
-  }, []);
+
+    checkSession();
+  }, [navigate]);
 
   const conff = async () => {
     if (pass !== conf) {
@@ -28,7 +31,7 @@ function Reset() {
     }
 
     if (!user) {
-      alert("User not authenticated. Please log in.");
+      alert("User not authenticated. Please use the reset link from your email.");
       return;
     }
 
@@ -39,27 +42,27 @@ function Reset() {
     } else {
       alert("Password updated successfully! Please log in.");
       await supabase.auth.signOut();
-      window.location.href = "/login";
+      navigate("/login");
     }
   };
 
   return (
     <div className={styles.body}>
       <div className={styles.conf} id="confirmation">
-      <input 
-        type="password" 
-        placeholder="New password" 
-        value={pass} 
-        onChange={(e) => setPass(e.target.value)} 
-      />
-      <input 
-        type="password" 
-        placeholder="Confirm password" 
-        value={conf} 
-        onChange={(e) => setConf(e.target.value)} 
-      />
-      <button className={styles.but} onClick={conff}>Confirm</button>
-    </div>
+        <input
+          type="password"
+          placeholder="New password"
+          value={pass}
+          onChange={(e) => setPass(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Confirm password"
+          value={conf}
+          onChange={(e) => setConf(e.target.value)}
+        />
+        <button className={styles.but} onClick={conff}>Confirm</button>
+      </div>
     </div>
   );
 }
