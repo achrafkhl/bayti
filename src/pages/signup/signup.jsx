@@ -49,6 +49,20 @@ function Signup() {
       return;
     }
 
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      showError("imail", "err-mail", "Enter a valid email address", "sign-mail");
+      return
+    }
+
+    if(phone.length!==10){
+      showError("passw", "err-phone", "Enter a valid phone number", "sign-tele");
+      return;
+    }
+
+    if(pass.length<=8 || !/[a-zA-Z]/.test(pass) || !/\d/.test(pass) ){
+      showError("tell", "err-pass", "password should contain at least 8 characters , letters(a-b-..) and numbers(1-2-..)", "sign-pass");
+      return;
+    }
     if (pass !== conf) {
       showError("tell", "err-pass", "Passwords do not match", "sign-pass");
       return;
