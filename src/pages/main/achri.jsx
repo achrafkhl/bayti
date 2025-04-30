@@ -3,6 +3,7 @@ import styles from './achri.module.css';
 import supabase from '/src/config/supabaseClient';
 import { Link } from 'react-router-dom';
 import image from '../../assets/9f56d93485bb138397711744476d8c46.png';
+import image1 from '../../../public/bayti2.png';
 function Achri() {
     const [topMeals, setTopMeals] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -30,7 +31,7 @@ function Achri() {
         <div className={styles.main_container}>
             <div className={styles.header}>
                 <div className={styles.logo}>
-                    <img src="/public/bayti2.png" alt="bayti" />
+                    <img src={image1} alt="bayti" />
                 </div>
                 <nav className={styles.nav}>
                     <ul className={styles.nav_list}>
