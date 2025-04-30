@@ -30,7 +30,7 @@ function Achri() {
         <div className={styles.main_container}>
             <div className={styles.header}>
                 <div className={styles.logo}>
-                    <h1>BAYTI</h1>
+                    <img src="/public/bayti2.png" alt="bayti" />
                 </div>
                 <nav className={styles.nav}>
                     <ul className={styles.nav_list}>

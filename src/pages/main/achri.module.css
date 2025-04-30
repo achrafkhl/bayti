@@ -23,7 +23,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 10px 0;
     background: linear-gradient(135deg, #590000 0%, #6a0000 100%);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
@@ -31,14 +31,14 @@ main {
 }
 
 .logo {
-    margin-left: 5%;
+    margin-left: 10%;
 }
 
-.logo h1 {
-    color: white;
-    font-size: 2rem;
+.logo img {
+    height: 60px;
+    width: 80px;
     margin: 0;
-    font-weight: 700;
+    padding: 0;
 }
 
 nav {
@@ -398,6 +398,9 @@ nav a:hover {
 }
 
 @media (max-width: 768px) {
+    .logo {
+        margin-left: 5%;
+    }
     .hero_section {
         flex-direction: column;
         text-align: center;

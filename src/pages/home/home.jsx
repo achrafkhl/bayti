@@ -287,7 +287,7 @@ function Home() {
                             thumbRightColor="rgba(89, 0, 0, 1)"
                             style={{border:"none",boxShadow:"none",backgroundColor:"transparent"}}
                         />
-                        <p style={{marginLeft:"30px",marginTop:"0px"}}>price: <b>0 - 1000 DA</b></p>
+                        <p style={{marginLeft:"30px",marginTop:"0px",paddingBottom:"30px"}}>price: <b>0 - 1000 DA</b></p>
                     </div>
                     <hr />
                 </div>

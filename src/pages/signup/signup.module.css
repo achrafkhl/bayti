@@ -254,9 +254,6 @@ option {
     padding-left: 0;
   }
 
-  .login input {
-    width: 280px;
-  }
 
   .continue {
     width: 80%;
@@ -290,9 +287,6 @@ option {
     padding: 20px 15px;
   }
 
-  .login input {
-    width: 250px;
-  }
 
   .grid {
     max-width: 250px;

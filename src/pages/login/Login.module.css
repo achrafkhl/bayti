@@ -182,3 +182,8 @@ a{
   font-weight: 600;
   font-size: medium;
 }
+@media (max-width: 768px) {
+  .login{
+    padding: 30px 10px;
+  }
+}
