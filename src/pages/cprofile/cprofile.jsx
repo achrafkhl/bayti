@@ -345,11 +345,11 @@ function Cprofile() {
             </div>
         
             <div className={styles.all}>
-              <input type="radio" name="tab" id="info" checked={selectedOption === "info"}  onChange={() => setSelectedOption("info")} />
-              <input type="radio" name="tab" id="history" checked={selectedOption === "history"} onChange={() => setSelectedOption("history")} />
-              <input type="radio" name="tab" id="pass" checked={selectedOption === "pass"} onChange={() => setSelectedOption("pass")} />
-              <input type="radio" name="tab" id="contact" checked={selectedOption === "contact"} onChange={() => setSelectedOption("contact")} />
-              <input type="radio" name="tab" id="out" checked={selectedOption === "out"} onChange={() => setSelectedOption("out")} />
+              <input type="radio" name="tab" id="info" checked={selectedOption === "info" } onClick={toggleMenu} onChange={() => setSelectedOption("info")} />
+              <input type="radio" name="tab" id="history" checked={selectedOption === "history"} onClick={toggleMenu} onChange={() => setSelectedOption("history")} />
+              <input type="radio" name="tab" id="pass" checked={selectedOption === "pass"} onClick={toggleMenu} onChange={() => setSelectedOption("pass")} />
+              <input type="radio" name="tab" id="contact" checked={selectedOption === "contact"} onClick={toggleMenu} onChange={() => setSelectedOption("contact")} />
+              <input type="radio" name="tab" id="out" checked={selectedOption === "out"} onClick={toggleMenu} onChange={() => setSelectedOption("out")} />
         
               <div className={`${styles.tabs} ${isMenuOpen ? styles.active : ''}`}>
                 <label htmlFor="info" className={styles.lwl}style={{position:"relative"}}>Personal information</label>

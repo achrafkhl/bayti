@@ -423,6 +423,9 @@ input[type="file"] {
     .email, .phone, .name {
         padding: 20px;
     }
+    .wahdd button, .zoujj button, .tlathaa button {
+        margin: 0;
+    }
 }
 
 .pass {
@@ -732,8 +735,17 @@ body.modal_open {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .history_modal_content {
+    .historique{
         width: 95%;
+        margin: 10px auto 0 auto;
+    }
+    
+    .more_info_btn {
+        width: 50px;
+    }
+
+    .history_modal_content {
+        width: 80%;
         padding: 25px;
     }
     
@@ -818,7 +830,6 @@ body.modal_open {
 }
 
 .history {
-    padding: 20px;
     width: 100%;
 }
 
@@ -940,7 +951,7 @@ body.modal_open {
     font-size: 0.9rem;
     transition: all 0.3s ease;
     white-space: nowrap;
-    width: 100%;
+    width: 100px;
     text-align: center;
 }
 
@@ -1030,7 +1041,7 @@ body.modal_open {
     cursor: pointer;
     color: white;
     position: fixed;
-    top: 20px;
+    top: 13px;
     left: 20px;
     z-index: 1000;
 }
@@ -1049,6 +1060,9 @@ body.modal_open {
         z-index: 999;
     }
     
+    .lwl{
+        margin-top: 50px;
+    }
     .tabs.active {
         left: 0;
     }

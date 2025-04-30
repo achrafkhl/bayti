@@ -399,7 +399,7 @@
     .modal .droite {
         padding: 10px;
         text-align: center;
-        gap: 10px;
+        gap: 5px;
     }
     
     .modal .droite h2 {
@@ -466,10 +466,11 @@
     }
     .modal {
         padding: 10px;
+        margin: 0 auto;
     }
     
     .modal .gauche {
-        max-width: 200px;
+        max-width: 100px;
     }
     
     .modal .droite h2 {
@@ -480,6 +481,7 @@
     .modal .droite p {
         font-size: 0.9rem;
         text-align: center;
+        margin: 0;
     }
     
     .add_to_cart, .add_to_fav {
