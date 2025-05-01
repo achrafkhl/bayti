@@ -4,7 +4,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import Item from "./item";
 import { Link,useNavigate } from "react-router-dom";
 import styles from './homes.module.css'
-
+import image1 from '../../../public/bayti2.png';
 
 function Homes() {
     const [orders, setOrders] = useState([]);
@@ -138,7 +138,7 @@ function Homes() {
     return (
         <div className={styles.body}>
             <div className={styles.header}>
-                <h1><em>BAYTI</em></h1>
+                <Link to="/homes"><img src={image1} alt="bayti" className="header_logo_image"/></Link>
                 <ul>
                     <li className={styles.active} style={{ backgroundColor: "grey", padding: '10px', borderRadius: "15px" }}>
                         <Link className={styles.a} to="/homes"><i className="fas fa-home"></i> <span>Home</span></Link>

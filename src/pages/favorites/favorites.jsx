@@ -4,6 +4,7 @@ import Card from "/src/pages/home/card";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link ,useNavigate} from 'react-router-dom';
 import styles from "./favorites.module.css"
+import image1 from '../../../public/bayti2.png';
 
 function Favorites() {
     const [sellers, setSellers] = useState([]);
@@ -142,7 +143,7 @@ function Favorites() {
         return (
           <div className={styles.body}>
             <div className={styles.header}>
-              <h1><em>BAYTI</em></h1>
+              <Link to="/home"><img src={image1} alt="bayti" className="header_logo_image"/></Link>
               <ul>
                 <li><Link className={styles.a} to="/home"><i className="fas fa-home"></i> <span>Home</span></Link></li>
                 <li style={{ backgroundColor: "grey", padding: "10px", borderRadius: "15px" }}>

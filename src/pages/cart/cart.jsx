@@ -4,6 +4,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Sela from "./sela";
 import styles from './cart.module.css';
+import image1 from '../../../public/bayti2.png';
 function Cart() {
     const [info, setInfo] = useState([]);
         const [err,setErr]=useState('')
@@ -182,7 +183,7 @@ function Cart() {
     return(
         <div className={styles.body}>
             <div className={styles.header}>
-  <h1><em>BAYTI</em></h1>
+  <Link to="/home"><img src={image1} alt="bayti" className="header_logo_image"/></Link>
   <ul>
     <li><Link className={styles.a}  to="/home"><i className="fas fa-home"></i> <span>Home</span></Link></li>
     <li><Link className={styles.a}  to="/favorites"><i className="fas fa-heart"></i> <span>Favorites</span></Link></li>

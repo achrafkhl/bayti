@@ -4,6 +4,7 @@ import Card from "/src/pages/home/card";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import styles from './meals.module.css'
 import { Link,useNavigate } from "react-router-dom";
+import image1 from '../../../public/bayti2.png';
 function Meals() {
     const [sellers, setSellers] = useState([]);
     const [err, setErr] = useState(null);
@@ -63,7 +64,7 @@ function Meals() {
     return (
         <div className={styles.body}>
             <div className={styles.header}>
-                <h1><em>BAYTI</em></h1>
+                <Link to="/homes"><img src={image1} alt="bayti" className="header_logo_image"/></Link>
                 <ul>
                     <li><Link className={styles.a} to="/homes"><i className="fas fa-home"></i> <span>Home</span></Link></li>
                     <li><Link className={styles.a} to="/new"><i className="fas fa-plus-circle"></i> <span>New meal</span></Link></li>

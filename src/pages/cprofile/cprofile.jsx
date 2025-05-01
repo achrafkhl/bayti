@@ -3,6 +3,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import supabase from '/src/config/supabaseClient'
 import styles from "./cprofile.module.css"
 import { Link,useNavigate } from 'react-router-dom';
+import image1 from '../../../public/bayti2.png';
 function Cprofile() {
     const [selectedOption, setSelectedOption] = useState("info");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -333,7 +334,7 @@ function Cprofile() {
           <div className={styles.body}>
             <div className={styles.header}>
               <i className={`fas fa-bars ${styles.menu_icon}`} onClick={toggleMenu}></i>
-              <h1><em>BAYTI</em></h1>
+              <Link to="/home"><img src={image1} alt="bayti" className="header_logo_image"/></Link>
               <ul>
                 <li><Link className={styles.a} to="/home"><i className="fas fa-home"></i> <span>Home</span></Link></li>
                 <li><Link className={styles.a} to="/favorites"><i className="fas fa-heart"></i> <span>Favorites</span></Link></li>
@@ -422,7 +423,7 @@ function Cprofile() {
                             </div>
                             <button onClick={change2} className={styles.mail_but} id= "phone-but">Change Phone</button>
                             <div id="phone" className={styles.zoujj}>
-                              <p>+213</p>
+                              
                               <input type="number" placeholder="Enter new phone number" value={newPhone} onChange={(e) => setNewPhone(e.target.value)} />
                               <button onClick={changePhone}>Update</button>
                               <button className={styles.cancel} onClick={cancelChange2}>

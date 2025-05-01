@@ -3,6 +3,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import supabase from '/src/config/supabaseClient'
 import { Link,useNavigate } from 'react-router-dom';
 import styles from '/src/pages/cprofile/cprofile.module.css'
+import image1 from '../../../public/bayti2.png';
 
 function Sprofile() {
     const [selectedOption, setSelectedOption] = useState("info");
@@ -331,7 +332,7 @@ function Sprofile() {
         <div className={styles.body}>
           <div className={styles.header}>
                         <i className={`fas fa-bars ${styles.menu_icon}`} onClick={toggleMenu}></i>
-                        <h1><em>BAYTI</em></h1>
+                        <Link to="/homes"><img src={image1} alt="bayti" className="header_logo_image"/></Link>
                         <ul>
                         <li><Link className={styles.a} to="/homes"><i className="fas fa-home"></i> <span>Home</span></Link></li>
                     <li><Link className={styles.a} to="/new"><i className="fas fa-plus-circle"></i> <span>New meal</span></Link></li>

@@ -9,7 +9,7 @@ import image1 from "../../assets/first.png";
 import image2 from "../../assets/second.jpeg";
 import image3 from "../../assets/third.jpg";
 import image4 from "../../assets/forth.jpg";
-
+import image5 from '../../../public/bayti2.png';
 function Home() {
     const [sellers, setSellers] = useState([]);
     const [err, setErr] = useState(null);
@@ -190,10 +190,10 @@ function Home() {
     return (
         <div className={styles.body}>
             <div className={styles.header}>
-                <h1><em>BAYTI</em></h1>
+                <Link to="/home"><img src={image5} alt="bayti" /></Link>
                 <ul>
                     <li style={{ backgroundColor: "grey", padding: '10px', borderRadius: "15px" }} >
-                        <Link to="home" className={styles.a}><i className="fas fa-home"></i> <span>Home</span></Link>
+                        <Link to="/home" className={styles.a}><i className="fas fa-home"></i> <span>Home</span></Link>
                     </li>
                     <li><Link className={styles.a} to="/favorites"><i className='fas fa-heart'></i> <span>Favorites</span></Link></li>
                     <li><Link className={styles.a} to="/cart"><i className="fas fa-shopping-cart"></i> <span>Cart</span></Link></li>
