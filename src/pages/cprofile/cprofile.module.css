@@ -1239,10 +1239,10 @@ body.modal_open {
 }
 
 .review_input {
-    width: 100%;
+    width: 90%;
     margin-top: 15px;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #adadad;
     border-radius: 6px;
     font-size: 14px;
     resize: vertical;
