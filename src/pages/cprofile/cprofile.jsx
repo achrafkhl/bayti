@@ -35,6 +35,11 @@ function Cprofile() {
         const [errItem,setErrItem] = useState(null);
         const [showItem,setShowItem] = useState(null);
 
+        const [rating, setRating] = useState(0);
+        const [selectedItem, setSelectedItem] = useState(null);
+        const [reviewText, setReviewText] = useState('');
+        const [showError, setShowError] = useState(false);
+
         const userId = sessionStorage.getItem("userId");
 
             const navigate = useNavigate();
@@ -330,6 +335,51 @@ function Cprofile() {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const handleRating = async (item, ratingValue) => {
+        if (ratingValue === 0) {
+            setShowError(true);
+            return;
+        }
+
+        try {
+            const { error } = await supabase
+                .from('order_items')
+                .update({ 
+                    rate: ratingValue,
+                    review: reviewText || null 
+                })
+                .eq('id', item.id);
+
+            if (error) {
+                console.error('Error updating rating:', error);
+                alert('Failed to update rating. Please try again.');
+                return;
+            }
+
+            // Update the local state
+            setItems(prevItems => {
+                const updatedItems = { ...prevItems };
+                const orderItems = updatedItems[item.order_id];
+                const updatedOrderItems = orderItems.map(orderItem => {
+                    if (orderItem.id === item.id) {
+                        return { ...orderItem, rate: ratingValue, review: reviewText || null };
+                    }
+                    return orderItem;
+                });
+                updatedItems[item.order_id] = updatedOrderItems;
+                return updatedItems;
+            });
+
+            setSelectedItem(null);
+            setRating(0);
+            setReviewText('');
+            setShowError(false);
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    };
+
     return (
           <div className={styles.body}>
             <div className={styles.header}>
@@ -529,13 +579,58 @@ function Cprofile() {
                                       <span>Price: {item.price} DA</span>
                                     </div>
                                   </div>
-                                  {item.rate==null? (
-                                    <button>rate item</button>
+                                  {item.rate == null ? (
+                                    <div className={styles.rating_section}>
+                                        <button className={styles.rate_button} style={{width:"fitContent"}} onClick={() => setSelectedItem(item)}>Rate Item</button>
+                                        {selectedItem?.id === item.id && (
+                                            <>
+                                                <div className={styles.rating_modal_overlay} onClick={() => {
+                                                    setSelectedItem(null);
+                                                    setRating(0);
+                                                    setReviewText('');
+                                                }} />
+                                                <div className={styles.rating_modal}>
+                                                    <h3>Rate this item</h3>
+                                                    <div className={styles.rating_stars}>
+                                                        {[1, 2, 3, 4, 5].map((star) => (
+                                                            <i
+                                                                key={star}
+                                                                className={`fas fa-star ${rating >= star ? 'rated' : ''}`}
+                                                                onClick={() => {
+                                                                    setRating(star);
+                                                                    setShowError(false);
+                                                                }}
+                                                                style={{ color: rating >= star ? 'orange' : '#ddd' }}
+                                                            />
+                                                        ))}
+                                                    </div>
+                                                    <p className={`${styles.error_message} ${showError ? styles.show : ''}`}>
+                                                        Please select a rating before submitting
+                                                    </p>
+                                                    <textarea
+                                                        className={styles.review_input}
+                                                        placeholder="Write your review here... (optional)"
+                                                        value={reviewText}
+                                                        onChange={(e) => setReviewText(e.target.value)}
+                                                    />
+                                                    <div className={styles.rating_actions}>
+                                                        <button onClick={() => handleRating(item, rating)}>Submit</button>
+                                                        <button onClick={() => {
+                                                            setSelectedItem(null);
+                                                            setRating(0);
+                                                            setReviewText('');
+                                                            setShowError(false);
+                                                        }}>Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
                                   ) : (
                                     <div className={styles.rate}>
-                                      {[...Array(item.rate)].map((_, i) => (
-                                                    <i key={i} className="fas fa-star" style={{ color: "orange" }}></i>
-                                                ))}
+                                        {[...Array(item.rate)].map((_, i) => (
+                                            <i key={i} className="fas fa-star" />
+                                        ))}
                                     </div>
                                   )}
                                 </div>
