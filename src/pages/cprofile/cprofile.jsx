@@ -529,6 +529,15 @@ function Cprofile() {
                                       <span>Price: {item.price} DA</span>
                                     </div>
                                   </div>
+                                  {item.rate==null? (
+                                    <button>rate item</button>
+                                  ) : (
+                                    <div className={styles.rate}>
+                                      {[...Array(item.rate)].map((_, i) => (
+                                                    <i key={i} className="fas fa-star" style={{ color: "orange" }}></i>
+                                                ))}
+                                    </div>
+                                  )}
                                 </div>
                               ))}
                             </div>
