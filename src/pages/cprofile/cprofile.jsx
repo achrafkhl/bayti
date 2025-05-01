@@ -485,7 +485,7 @@ function Cprofile() {
                               <p className={styles[`status_${order.status}`]}>
                                 {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                               </p>
-                              <button className={styles.more_info_btn} onClick={() => setShowItem(order)}>More Info</button>
+                              <button className={styles.more_info_btn} onClick={() => setShowItem(order)}>More</button>
                             </div>
                           ))}
                           {!showAllOrders && orders.length > 10 && (

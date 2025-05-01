@@ -103,7 +103,9 @@
     }
 }
 .request,.progress {
-    margin-right: 30px;
+    margin: 0 auto;
+    width: 100vw;
+    margin-left: 0px;
 }
 /* Orders Section */
 .orders_container, .progress_container {
@@ -297,7 +299,7 @@ span {
 }
 
 .items_list {
-    width: 100%;
+    width: 80%;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -647,9 +649,9 @@ span {
 
 @media (max-width: 480px) {
     .orders_container, .progress_container {
-        width: 100vw;
+        width: 90vw;
         padding: 15px;
-        gap: 15px;
+      
     }
 
     .order_card {

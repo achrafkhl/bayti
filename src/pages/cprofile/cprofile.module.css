@@ -558,6 +558,9 @@ input[type="file"] {
         width: 142px;
         height: 45px;
     }
+    .more_info_btn {
+        width: 20px;
+    }
 }
 
 
@@ -951,7 +954,7 @@ body.modal_open {
     font-size: 0.9rem;
     transition: all 0.3s ease;
     white-space: nowrap;
-    width: 100px;
+    width: fit-content;
     text-align: center;
 }
 
@@ -1039,7 +1042,7 @@ body.modal_open {
     display: none;
     font-size: 24px;
     cursor: pointer;
-    color: white;
+    color: rgb(0, 0, 0);
     position: fixed;
     top: 13px;
     left: 20px;
