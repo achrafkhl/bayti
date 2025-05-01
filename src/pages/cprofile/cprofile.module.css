@@ -1248,6 +1248,7 @@ body.modal_open {
     resize: vertical;
     min-height: 80px;
     max-height: 150px;
+    background-color: #bdbdbd;
 }
 
 .review_input:focus {
