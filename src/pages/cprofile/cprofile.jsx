@@ -471,7 +471,7 @@ function Cprofile() {
                           <p>Date</p>
                           <p>Total Price</p>
                           <p>Status</p>
-                          <p>Actions</p>
+                          <p className={styles.actions}>Actions</p>
                         </div>
                         <div className={styles.down}>
                           {displayedOrders.map((order) => (

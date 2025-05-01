@@ -217,7 +217,6 @@
     justify-content: start;
 }
 
-/* Item */
 .left {
     display: flex;
     align-items: center;
@@ -285,23 +284,12 @@ span {
     padding: 20px;
 }
 
-.order_modal_content {
-    background-color: rgb(214, 214, 214);
-    border: 2px solid rgba(89, 0, 0, 0.7);
-    border-radius: 10px;
-    box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.2);
-    padding: 30px 20px;
-    width: 90%;
-    max-width: 800px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-}
-
 .items_list {
-    width: 80%;
+    width: 100%;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0;
+    padding: 0;
+
 }
 
 .items_list li {
@@ -347,39 +335,43 @@ span {
     .order_modal_content {
         width: 95%;
         padding: 20px 15px;
+        margin-left: -40px;
     }
-
-    .items_list li {
-        padding: 15px 8px;
+    .all {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        justify-content: start;
     }
-
+    
+    /* Item */
+    .left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        margin-right: 20px;
+    }
+    
+    .left img {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+    
+    span {
+        font-size: 12px;
+        font-weight: bold;
+        color: #333;
+        z-index: 1;
+    }
     .close_btn {
         top: 8px;
         right: 8px;
         padding: 5px 8px;
         font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .order_modal {
-        padding: 10px;
-    }
-
-    .order_modal_content {
-        width: 100%;
-        padding: 15px 10px;
-    }
-
-    .items_list li {
-        padding: 12px 6px;
-    }
-
-    .close_btn {
-        top: 5px;
-        right: 5px;
-        padding: 4px 6px;
-        font-size: 12px;
     }
 }
 
@@ -407,6 +399,7 @@ span {
     max-height: 80%;
     overflow-y: auto;
     position: relative;
+    min-width: 230px;
 }
 
 .close_btn {
@@ -651,7 +644,7 @@ span {
     .orders_container, .progress_container {
         width: 90vw;
         padding: 15px;
-      
+        
     }
 
     .order_card {
