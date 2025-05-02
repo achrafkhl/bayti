@@ -10,6 +10,7 @@ import image2 from "../../assets/second.jpeg";
 import image3 from "../../assets/third.jpg";
 import image4 from "../../assets/forth.jpg";
 import image5 from '../../../public/bayti2.png';
+import renderStars from "../../config/stars"
 function Home() {
     const [sellers, setSellers] = useState([]);
     const [err, setErr] = useState(null);
@@ -370,9 +371,7 @@ function Home() {
                                         <h2>{selectedProduct.product.toUpperCase()}</h2>
                                         <div className={styles.review}>
                                             <div className={styles.rate}>
-                                                {[...Array(selectedProduct.rating)].map((_, i) => (
-                                                    <i key={i} className="fas fa-star" style={{ color: "orange" }}></i>
-                                                ))}
+                                                {renderStars(selectedProduct.rating)}
                                             </div>
                                             <p><i className="fas fa-mitten"></i> {selectedProduct.name}</p>
                                         </div>

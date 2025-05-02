@@ -5,7 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link ,useNavigate} from 'react-router-dom';
 import styles from "./favorites.module.css"
 import image1 from '../../../public/bayti2.png';
-
+import renderStars from "../../config/stars"
 function Favorites() {
     const [sellers, setSellers] = useState([]);
     const [err, setErr] = useState(null);
@@ -194,9 +194,7 @@ function Favorites() {
                           <h2>{selectedProduct.product.toUpperCase()}</h2>
                           <div className={styles.review}>
                             <div className={styles.rate}>
-                              {[...Array(selectedProduct.rating)].map((_, i) => (
-                                <i key={i} className="fas fa-star" style={{ color: "orange" }}></i>
-                              ))}
+                              {renderStars(selectedProduct.rating)}
                             </div>
                             <p><i className="fas fa-mitten"></i> {selectedProduct.name}</p>
                           </div>

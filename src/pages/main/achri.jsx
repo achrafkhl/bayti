@@ -4,6 +4,7 @@ import supabase from '/src/config/supabaseClient';
 import { Link } from 'react-router-dom';
 import image from '../../assets/9f56d93485bb138397711744476d8c46.png';
 import image1 from '../../../public/bayti2.png';
+import renderStars from "../../config/stars"
 function Achri() {
     const [topMeals, setTopMeals] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -101,9 +102,7 @@ function Achri() {
                                     </div>
                                     <div className={styles.testimonial_content}>
                                         <div className={styles.meal_rating}>
-                                            {[...Array(meal.rating)].map((_, i) => (
-                                                <i key={i} className="fas fa-star"></i>
-                                            ))}
+                                            {renderStars(meal.rating)}
                                         </div>
                                         <h3>{meal.product}</h3>
                                         <div className={styles.meal_category}>

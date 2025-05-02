@@ -1,4 +1,5 @@
 import styles from"./home.module.css"
+import renderStars from "../../config/stars"
 function Card({seller, onClick}) {
     
     const showCard = () => {
@@ -17,9 +18,7 @@ function Card({seller, onClick}) {
             <p>{seller.product}</p>
             <h2>{seller.price} DA</h2>
             <div className={styles.rate}>
-                {[...Array(seller.rating)].map((_, i) => (
-                    <i key={i} className="fas fa-star" style={{ color: "orange" }}></i>
-                ))}
+            {renderStars(seller.rating)}
                 <p className={styles.hide} id={seller.id + 'd'} style={{ marginTop: '10px',visibility:"hidden" }}>{seller.category}</p>
             </div>
         </div>
