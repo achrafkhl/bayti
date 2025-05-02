@@ -395,7 +395,7 @@ function Home() {
                                 <h2 className={styles.howaa} style={{ textAlign: "right", marginRight: "30px" }}>
                                     <b>Final Price:</b> {(selectedProduct.price * quantity).toLocaleString()} DA
                                 </h2>
-                                <p className={styles.howa} style={{ marginTop: "-80px" }}><em>Category</em>: {selectedProduct.category}</p>
+                                <p className={styles.howa} style={{ marginTop: "-40px" }}><em>Category</em>: {selectedProduct.category}</p>
                                 <p className={styles.howa}><em>Description</em>: {selectedProduct.description}</p>
                             </>
                         )}

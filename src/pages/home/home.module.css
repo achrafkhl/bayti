@@ -299,7 +299,6 @@
     max-height: 90vh;
     position: relative;
     background-color: rgb(222, 222, 222);
-    overflow-y: auto;
 }
 
 .modal .all {
