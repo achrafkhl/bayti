@@ -19,6 +19,8 @@ function Home() {
     const [isFavorite, setIsFavorite] = useState(false);
     const [showFilters, setShowFilters] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
+    const [reviews, setReviews] = useState([]);
+    const [showReviews, setShowReviews] = useState(false);
     const itemsPerPage = 12;
 
     const [cartMessage, setCartMessage] = useState(""); 
@@ -186,6 +188,24 @@ function Home() {
             }, 1500);
         }
     };
+
+    useEffect(() => {
+        if (selectedProduct) {
+            const fetchReviews = async () => {
+                const { data, error } = await supabase
+                    .from('order_items')
+                    .select('*')
+                    .eq('product_id', selectedProduct.id)
+
+                if (error) {
+                    console.error('Error fetching reviews:', error);
+                } else {
+                    setReviews(data || []);
+                }
+            };
+            fetchReviews();
+        }
+    }, [selectedProduct]);
 
     return (
         <div className={styles.body}>
@@ -396,6 +416,76 @@ function Home() {
                                 </h2>
                                 <p className={styles.howa} style={{ marginTop: "-40px" }}><em>Category</em>: {selectedProduct.category}</p>
                                 <p className={styles.howa}><em>Description</em>: {selectedProduct.description}</p>
+                                
+                                {/* Modern Reviews Tab */}
+                                <div className={styles.reviews_tab}>
+                                    <div 
+                                        className={`${styles.tab_header} ${showReviews ? styles.active : ''}`}
+                                        onClick={() => {
+                                            setShowReviews(!showReviews);
+                                            if (!showReviews) {
+                                                const fetchReviews = async () => {
+                                                    const { data, error } = await supabase
+                                                        .from('order_items')
+                                                        .select('*')
+                                                        .eq('product_id', selectedProduct.id);
+
+                                                    if (error) {
+                                                        console.error('Error fetching reviews:', error);
+                                                    } else {
+                                                        setReviews(data || []);
+                                                    }
+                                                };
+                                                fetchReviews();
+                                            }
+                                        }}
+                                    >
+                                        <div className={styles.tab_icon}>
+                                            <i className="fas fa-star"></i>
+                                        </div>
+                                        <div className={styles.tab_content}>
+                                            <span className={styles.tab_title}>Reviews</span>
+                                            <span className={styles.tab_count}>
+                                                {reviews.filter(r => r.review).length} reviews
+                                            </span>
+                                        </div>
+                                        <div className={styles.tab_arrow}>
+                                            <i className={`fas fa-chevron-${showReviews ? 'up' : 'down'}`}></i>
+                                        </div>
+                                    </div>
+
+                                    {/* Reviews Section */}
+                                    <div className={`${styles.reviews_section} ${showReviews ? styles.show : ''}`}>
+                                        <div className={styles.reviews_container}>
+                                            {reviews.filter(r => r.review).length > 0 ? (
+                                                reviews
+                                                    .filter(r => r.review)
+                                                    .map((review, index) => (
+                                                        <div key={index} className={styles.review_item}>
+                                                            <div className={styles.review_header}>
+                                                                <div className={styles.review_rating}>
+                                                                    {renderStars(review.rate)}
+                                                                </div>
+                                                                <span className={styles.review_date}>
+                                                                    {new Date(review.rated_at).toLocaleDateString('en-US', {
+                                                                        year: 'numeric',
+                                                                        month: 'long',
+                                                                        day: 'numeric',
+                                                                        hour: '2-digit',
+                                                                        minute: '2-digit',
+                                                                    })}
+                                                                </span>
+                                                            </div>
+                                                            <p className={styles.review_text}>{review.review}</p>
+                                                        </div>
+                                                    ))
+                                            ) : (
+                                                <p className={styles.no_reviews}>No reviews yet</p>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+
                             </>
                         )}
                     </div>
