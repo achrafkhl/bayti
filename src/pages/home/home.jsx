@@ -92,7 +92,6 @@ function Home() {
         return matchesCategory && matchesRating && matchesPrice && matchesSearch;
     });
     
-    // Calculate pagination
     const totalPages = Math.ceil(filteredSellers.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -135,7 +134,7 @@ function Home() {
                 if (error) {
                     console.error("Error fetching favorites:", error);
                 } else {
-                    setIsFavorite(data.length > 0); // If found, mark as favorite
+                    setIsFavorite(data.length > 0); 
                 }
             };
             checkFavoriteStatus();
